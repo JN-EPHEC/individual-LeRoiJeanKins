@@ -4,7 +4,10 @@ function init(){
         document.getElementById("ut_enregistre").innerHTML = ""
         for (let donne in donnees) {
             if(donnees[donne].nom != null && donnees[donne].prenom != null){
-                document.getElementById("ut_enregistre").innerHTML += `<li>${donnees[donne].nom} ${donnees[donne].prenom}</li>`;
+                document.getElementById("ut_enregistre").innerHTML += `<li>
+                                                                                    ${donnees[donne].nom} ${donnees[donne].prenom}
+                                                                                    <button type="button" onclick="supp(${donnees[donne].id})">X</button>
+                                                                                </li>`;
             }
         }
     })
@@ -23,4 +26,11 @@ fetch("/api/users", {
     console.log(donnees);
     init();
   })
+}
+function supp(id){
+    fetch(`/api/users/${id}`, {
+        method:"DELETE"
+    }).then(response => {
+        init();
+    })
 }
