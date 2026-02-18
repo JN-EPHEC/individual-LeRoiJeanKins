@@ -16,3 +16,5 @@ User.init({
 )
 
 console.log(User === sequelize.models.User);
+
+export default User;

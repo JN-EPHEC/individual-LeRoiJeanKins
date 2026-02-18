@@ -1,13 +1,23 @@
-import express from 'express';
+import { Router, type Request, type Response } from 'express';
+import User from '../models/User.js';
 
-const router = express.Router();
-const users = [
-    { id: 1, name: "Alice" },
-    { id: 2, name: "Bob" },
-];
+const router = Router();
 
-router.get("/", (req:object, res:object) => {
+router.get("/", async (req:Request, res:Response) => {
+    const users = await User.findAll();
     res.json(users);
+});
+router.post("/", async (req:Request, res:Response) => {
+    const users = await User.create(req.body);
+    res.json(users);
+})
+router.delete("/:id", async (req:Request, res:Response) => {
+    await User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.json({ message: `Utilisateur avec l'id ${req.params.id} a ete supp` });
 });
 
 export default router;
