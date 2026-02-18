@@ -1,9 +1,12 @@
 import express from 'express';
+import sequelize from './config/database.js';
 import userRoutes from './routes/userRoutes.js';
-import sequelize from 'sequelize';
+import './models/User.js'
+
 
 const app = express();
 const port = 3000;
+app.use(express.json());
 
 app.get('/', (req:object, res:object) => {
     res.send('Hello World!');
@@ -27,7 +30,12 @@ app.get('/api/hello/:name', (req:object, res:object) => {
 
 app.use('/api/users', userRoutes);
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-    console.log(sequelize);
+sequelize.sync().then(() => {
+    console.log("Syncronisation");
+    app.listen(port, () => {
+        console.log(`Le serveur est lancé sur le port ${port}`);
+        console.log(sequelize);
+    })
 })
+
+
