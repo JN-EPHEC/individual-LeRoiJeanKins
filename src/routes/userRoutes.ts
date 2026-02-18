@@ -19,5 +19,18 @@ router.delete("/:id", async (req:Request, res:Response) => {
     })
     res.json({ message: `Utilisateur avec l'id ${req.params.id} a ete supp` });
 });
+// devoir
+router.put("/:id", async (req:Request, res:Response) => {
+    let id = req.params.id;
+    const updatedUser = await User.findByPk(id);
+    await User.update(req.body, {
+        where: { id:id}
+    })
+    if (updatedUser) {
+        res.status(200).json(updatedUser);
+    } else {
+        res.status(404).json({ error: "Utilisateur non trouvé" });
+    }
+})
 
 export default router;

@@ -31,7 +31,7 @@ app.get('/api/hello/:name', (req:object, res:object) => {
 
 app.use('/api/users', userRoutes);
 
-sequelize.sync().then(() => {
+sequelize.sync({ alter: true }).then(() => {
     console.log("Syncronisation");
     app.listen(port, () => {
         console.log(`Le serveur est lancé sur le port ${port}`);

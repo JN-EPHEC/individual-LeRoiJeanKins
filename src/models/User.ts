@@ -9,6 +9,10 @@ User.init({
     },
     prenom: {
         type: DataTypes.STRING
+    },
+    desirable:{
+        type: DataTypes.BOOLEAN,
+        defaultValue : true
     }
 },
     {sequelize,
