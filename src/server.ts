@@ -3,6 +3,7 @@ import {requestLogger} from "./middlewares/logger";
 import sequelize from './config/database.js';
 import userRoutes from './routes/userRoutes.js';
 import './models/User.js'
+import './middlewares/errorHandler'
 
 
 
