@@ -59,6 +59,7 @@ function ban(id,bool){
 }
 function listeBan(){
     fetch("/api/users").then(response => response.json()).then((donnees) => {
+        document.getElementById("et_inde").innerHTML = ""
         for (let donne in donnees) {
             if(donnees[donne].desirable === false){
                 console.log(donnees[donne]);

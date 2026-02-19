@@ -1,7 +1,7 @@
 {
   "name": "package.json",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"# individual-LeRoiJeanKins\" \r \"# individual-LeRoiJeanKins\"",
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -13,16 +13,26 @@
   "keywords": [],
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^25.2.3",
+    "@types/node": "^25.3.0",
+    "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "git": "^0.1.5",
     "json": "^11.0.0",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JN-EPHEC/individual-LeRoiJeanKins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JN-EPHEC/individual-LeRoiJeanKins/issues"
+  },
+  "homepage": "https://github.com/JN-EPHEC/individual-LeRoiJeanKins#readme"
 }
