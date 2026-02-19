@@ -1,12 +1,12 @@
 import { Router, type Request, type Response } from 'express';
 import User from '../models/User.js';
+import * as userController from "../controllers/userController";
+
 
 const router = Router();
 
-router.get("/", async (req:Request, res:Response) => {
-    const users = await User.findAll();
-    res.status(200).json(users);
-});
+router.get("/", userController.getAllUsers);
+
 router.post("/", async (req:Request, res:Response) => {
     const users = await User.create(req.body);
     res.json(users);
