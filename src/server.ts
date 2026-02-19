@@ -1,13 +1,19 @@
 import express from 'express';
+import {requestLogger} from "./middlewares/logger";
 import sequelize from './config/database.js';
 import userRoutes from './routes/userRoutes.js';
 import './models/User.js'
 
 
+
 const app = express();
-app.use(express.static('public'));
 const port = 3000;
+
+app.use(requestLogger);
+app.use(express.static('public'));
 app.use(express.json());
+app.use('/api/users', userRoutes);
+
 
 app.get('/', (req:object, res:object) => {
     res.send('Hello World!');
@@ -28,8 +34,6 @@ app.get('/api/hello/:name', (req:object, res:object) => {
 
     res.json(msg);
 })
-
-app.use('/api/users', userRoutes);
 
 sequelize.sync().then(() => {
     console.log("Syncronisation");
