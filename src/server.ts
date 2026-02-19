@@ -4,6 +4,7 @@ import sequelize from './config/database.js';
 import userRoutes from './routes/userRoutes.js';
 import './models/User.js'
 import './middlewares/errorHandler'
+import {errorHandler} from "./middlewares/errorHandler";
 
 
 
@@ -35,6 +36,8 @@ app.get('/api/hello/:name', (req:object, res:object) => {
 
     res.json(msg);
 })
+
+app.use(errorHandler);
 
 sequelize.sync().then(() => {
     console.log("Syncronisation");
