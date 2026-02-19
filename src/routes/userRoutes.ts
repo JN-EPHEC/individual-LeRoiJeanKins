@@ -5,7 +5,19 @@ import * as userController from "../controllers/userController";
 
 const router = Router();
 
-router.get("/", userController.getAllUsers);
+
+/**
+ * @swagger
+ * /api/users:
+ *  get:
+ *      summary: Récupère la liste des utilisateurs
+ *      tags: [Users]
+ *      responses:
+ *        200:
+ *          description: Succès
+ */
+router.get('/', userController.getAllUsers);
+
 
 router.post("/", async (req:Request, res:Response) => {
     const users = await User.create(req.body);

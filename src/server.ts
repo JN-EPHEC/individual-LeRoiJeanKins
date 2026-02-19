@@ -5,12 +5,14 @@ import userRoutes from './routes/userRoutes.js';
 import './models/User.js'
 import './middlewares/errorHandler'
 import {errorHandler} from "./middlewares/errorHandler";
-
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./config/swagger";
 
 
 const app = express();
 const port = 3000;
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(requestLogger);
 app.use(express.static('public'));
 app.use(express.json());
