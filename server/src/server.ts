@@ -41,6 +41,7 @@ app.get('/api/hello/:name', (req:object, res:object) => {
     res.json(msg);
 })
 
+
 app.use(errorHandler);
 
 sequelize.sync().then(() => {

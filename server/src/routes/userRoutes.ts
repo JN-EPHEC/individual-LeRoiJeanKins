@@ -1,7 +1,7 @@
 import { Router, type Request, type Response } from 'express';
 import User from '../models/User.js';
 import * as userController from "../controllers/userController";
-
+import { checkIdParam } from "../middlewares/checkIdParam";
 
 const router = Router();
 
@@ -18,12 +18,11 @@ const router = Router();
  */
 router.get('/', userController.getAllUsers);
 
-
 router.post("/", async (req:Request, res:Response) => {
     const users = await User.create(req.body);
     res.json(users);
 })
-router.delete("/:id", async (req:Request, res:Response) => {
+router.delete("/:id", checkIdParam, async (req:Request, res:Response) => {
     await User.destroy({
         where: {
             id: req.params.id
