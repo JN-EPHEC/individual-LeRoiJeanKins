@@ -7,6 +7,7 @@ import './middlewares/errorHandler'
 import {errorHandler} from "./middlewares/errorHandler";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./config/swagger";
+import cors from 'cors';
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(requestLogger);
 app.use(express.static('public'));
 app.use(express.json());
 app.use('/api/users', userRoutes);
+app.use(cors());
 
 
 app.get('/', (req:object, res:object) => {
