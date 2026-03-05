@@ -1,5 +1,5 @@
 {
-  "name": "package.json",
+  "name": "mi-proyecto-super-hermoso-mustafa-hasanov",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -7,11 +7,17 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx --watch src/server.ts"
+    "//": "Installe les dépendances des deux projets",
+    "setup": "npm install --prefix server && npm install --prefix client",
+    "//": "Raccourcis vers les commandes des sous-dossiers",
+    "start:server": "npm run start --prefix server",
+    "start:client": "npm run dev --prefix client",
+    "//": "Lance les deux en parallèle",
+    "dev": "concurrently \"npm run start:server\" \"npm run start:client\""
   },
   "keywords": [],
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^25.3.0",
     "@types/swagger-jsdoc": "^6.0.4",
@@ -21,6 +27,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "git": "^0.1.5",
     "json": "^11.0.0",

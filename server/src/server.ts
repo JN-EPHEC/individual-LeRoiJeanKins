@@ -7,7 +7,7 @@ import './middlewares/errorHandler'
 import {errorHandler} from "./middlewares/errorHandler";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./config/swagger";
-import cors from 'cors';
+import cors from "cors";
 
 
 const app = express();
