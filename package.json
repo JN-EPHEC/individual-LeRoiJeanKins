@@ -7,12 +7,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "//": "Installe les dépendances des deux projets",
+    "start": "tsx watch src/server.ts",
+    "//": "Lance les deux en parallèle",
     "setup": "npm install --prefix server && npm install --prefix client",
-    "//": "Raccourcis vers les commandes des sous-dossiers",
     "start:server": "npm run start --prefix server",
     "start:client": "npm run dev --prefix client",
-    "//": "Lance les deux en parallèle",
     "dev": "concurrently \"npm run start:server\" \"npm run start:client\""
   },
   "keywords": [],
@@ -22,6 +21,7 @@
     "@types/node": "^25.3.0",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
+    "concurrently": "^9.2.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"

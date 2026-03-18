@@ -5,7 +5,7 @@ function init(){
         for (let donne in donnees) {
             if(donnees[donne].nom != null && donnees[donne].prenom != null){
                 document.getElementById("ut_enregistre").innerHTML += `<li>
-                                                                                    ${donnees[donne].nom} ${donnees[donne].prenom}
+                                                                                    ${donnees[donne].prenom} ${donnees[donne].nom}
                                                                                     <button type="button" onclick="supp(${donnees[donne].id})">X</button>
                                                                                 </li>`;
             }
