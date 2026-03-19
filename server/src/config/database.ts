@@ -1,3 +1,5 @@
+import { Sequelize } from 'sequelize';
+import 'dotenv/config';
 
 const sequelize = process.env.DATABASE_URL
     ? new Sequelize(process.env.DATABASE_URL, {
@@ -11,11 +13,11 @@ const sequelize = process.env.DATABASE_URL
         logging: false,
     })
     : new Sequelize({
-        username: process.env.DB_USER || "postgres",
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME || "postgres",
-        host: process.env.DB_HOST,
-        port: Number(process.env.DB_PORT || 5432),
+        username: process.env.DB_USER! || "postgres",
+        password: process.env.DB_PASSWORD!,
+        database: process.env.DB_NAME! || "postgres",
+        host: process.env.DB_HOST! || "db.sqeuttxmxasxzdazmqyu.supabase.co",
+        port: Number(process.env.DB_PORT! || 5432),
         dialect: "postgres",
         dialectOptions: {
             ssl: {
